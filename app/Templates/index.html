@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Predict Potential Fraud</title>
+  </head>
+  <body>
+    <h2>Predict Potential Fraud</h2>
+
+    <form method="POST" action="/">
+      <label for="BeneID">Beneficiary ID:</label><br>
+      <input type="text" name="BeneID" required><br><br>
+
+      <label for="ClaimID">Claim ID:</label><br>
+      <input type="text" name="ClaimID" required><br><br>
+
+      <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed:</label><br>
+      <input type="number" name="InscClaimAmtReimbursed" required><br><br>
+
+      <label for="DeductibleAmtPaid">Deductible Amount Paid:</label><br>
+      <input type="number" name="DeductibleAmtPaid" required><br><br>
+
+      <label for="RenalDiseaseIndicator">Renal Disease Indicator (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="RenalDiseaseIndicator" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_Alzheimer">Chronic Condition: Alzheimer (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_Alzheimer" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_Heartfailure">Chronic Condition: Heart Failure (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_Heartfailure" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_KidneyDisease">Chronic Condition: Kidney Disease (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_KidneyDisease" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_Cancer">Chronic Condition: Cancer (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_Cancer" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_ObstrPulmonary">Chronic Condition: Obstructive Pulmonary (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_ObstrPulmonary" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_Depression">Chronic Condition: Depression (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_Depression" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_Diabetes">Chronic Condition: Diabetes (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_Diabetes" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_IschemicHeart">Chronic Condition: Ischemic Heart (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_IschemicHeart" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_Osteoporasis">Chronic Condition: Osteoporosis (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_Osteoporasis" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_rheumatoidarthritis">Chronic Condition: Rheumatoid Arthritis (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_rheumatoidarthritis" min="0" max="1" required><br><br>
+
+      <label for="ChronicCond_stroke">Chronic Condition: Stroke (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="ChronicCond_stroke" min="0" max="1" required><br><br>
+
+      <label for="AdmissionDays">Admission Days:</label><br>
+      <input type="number" name="AdmissionDays" required><br><br>
+
+      <label for="ClaimDays">Claim Days:</label><br>
+      <input type="number" name="ClaimDays" required><br><br>
+
+      <label for="is_dead">Is Dead (1 for Yes, 0 for No):</label><br>
+      <input type="number" name="is_dead" min="0" max="1" required><br><br>
+
+      <label for="Num_UniqueClmDiagnosis">Number of Unique Claim Diagnoses:</label><br>
+      <input type="number" name="Num_UniqueClmDiagnosis" required><br><br>
+
+      <label for="Num_UniqueProcedureCode">Number of Unique Procedure Codes:</label><br>
+      <input type="number" name="Num_UniqueProcedureCode" required><br><br>
+
+      <label for="NumPhysicians">Number of Physicians:</label><br>
+      <input type="number" name="NumPhysicians" required><br><br>
+
+      <label for="NoOfMonths_PartACov">Number of Months with Part A Coverage:</label><br>
+      <input type="number" name="NoOfMonths_PartACov" required><br><br>
+
+      <label for="NoOfMonths_PartBCov">Number of Months with Part B Coverage:</label><br>
+      <input type="number" name="NoOfMonths_PartBCov" required><br><br>
+
+      <label for="IPAnnualReimbursementAmt">Inpatient Annual Reimbursement Amount:</label><br>
+      <input type="number" name="IPAnnualReimbursementAmt" required><br><br>
+
+      <label for="IPAnnualDeductibleAmt">Inpatient Annual Deductible Amount:</label><br>
+      <input type="number" name="IPAnnualDeductibleAmt" required><br><br>
+
+      <label for="OPAnnualReimbursementAmt">Outpatient Annual Reimbursement Amount:</label><br>
+      <input type="number" name="OPAnnualReimbursementAmt" required><br><br>
+
+      <label for="OPAnnualDeductibleAmt">Outpatient Annual Deductible Amount:</label><br>
+      <input type="number" name="OPAnnualDeductibleAmt" required><br><br>
+
+      <label for="Age">Age:</label><br>
+      <input type="number" name="Age" required><br><br>
+
+      <input type="submit" value="Submit">
+    </form>
+
+    {% if pred is not none %}
+      <p>The model predicts that this claim is {% if pred >= 0.5 %}potential fraud{% else %}not potential fraud{% endif %} with a probability of {{ pred }}</p>
+    {% endif %}
+  </body>
+</html>
+
