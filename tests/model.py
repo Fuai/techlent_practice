@@ -3,7 +3,7 @@ import pandas as pd
 from sklearn.linear_model import LogisticRegression
 
 # Load the data
-df = pd.read_csv('Train_withlabel_121624.csv')
+df = pd.read_csv('011525updated data.csv')
 
 # Select features and target
 X = df.iloc[:, 1:-1]

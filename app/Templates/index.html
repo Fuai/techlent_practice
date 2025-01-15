@@ -1,4 +1,100 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraud Prediction</title>
+    <style>
+        .prediction {
+            font-size: 30px;
+            font-weight: bold;
+            color: #FF0000;
+        }
+        .form-field {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fraud Prediction Form</h1>
+    <form method="POST">
+        <div class="form-field">
+            <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed (in USD):</label><br>
+            <input type="number" name="InscClaimAmtReimbursed" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="DeductibleAmtPaid">Deductible Amount Paid (in USD):</label><br>
+            <input type="number" name="DeductibleAmtPaid" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="RenalDiseaseIndicator">Renal Disease Indicator (Numeric):</label><br>
+            <input type="number" name="RenalDiseaseIndicator" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="ChronicCond_Alzheimer">Chronic Condition: Alzheimer (Numeric):</label><br>
+            <input type="number" name="ChronicCond_Alzheimer" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="ChronicCond_Heartfailure">Chronic Condition: Heart Failure (Numeric):</label><br>
+            <input type="number" name="ChronicCond_Heartfailure" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="ChronicCond_KidneyDisease">Chronic Condition: Kidney Disease (Numeric):</label><br>
+            <input type="number" name="ChronicCond_KidneyDisease" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="ChronicCond_Cancer">Chronic Condition: Cancer (Numeric):</label><br>
+            <input type="number" name="ChronicCond_Cancer" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="AdmissionDays">Admission Days (Integer):</label><br>
+            <input type="number" name="AdmissionDays" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="ClaimDays">Claim Days (Integer):</label><br>
+            <input type="number" name="ClaimDays" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="is_dead">Is Dead (Numeric):</label><br>
+            <input type="number" name="is_dead" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="Num_UniqueClmDiagnosis">Number of Unique Claim Diagnoses (Integer):</label><br>
+            <input type="number" name="Num_UniqueClmDiagnosis" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="Num_UniqueProcedureCode">Number of Unique Procedure Codes (Integer):</label><br>
+            <input type="number" name="Num_UniqueProcedureCode" step="any" required><br><br>
+        </div>
+
+        <div class="form-field">
+            <label for="NumPhysicians">Number of Physicians (Integer):</label><br>
+            <input type="number" name="NumPhysicians" step="any" required><br><br>
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    {% if pred is not none %}
+        <div class="prediction">
+            <p>The probability of fraud is: <strong>{{ pred }}</strong></p>
+            <p>This claim is {% if pred >= 0.5 %}potential fraud{% else %}not fraud{% endif %}.</p>
+        </div>
+    {% endif %}
+</body>
+</html>
+<!DOCTYPE html>
 <html>
   <head>
     <title>Predict Potential Fraud</title>
