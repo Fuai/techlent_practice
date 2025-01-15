@@ -5,197 +5,155 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fraud Prediction</title>
     <style>
-        .prediction {
-            font-size: 30px;
-            font-weight: bold;
-            color: #FF0000;
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
         .form-field {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .form-field label {
+            font-weight: bold;
+            display: block;
+        }
+        .form-field input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-field input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-field input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        .prediction {
+            font-size: 18px;
+            font-weight: bold;
+            color: #FF0000;
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
-    <h1>Fraud Prediction Form</h1>
-    <form method="POST">
-        <div class="form-field">
-            <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed (in USD):</label><br>
-            <input type="number" name="InscClaimAmtReimbursed" step="any" required><br><br>
-        </div>
+    <div class="container">
+        <h1>Fraud Prediction Form</h1>
+        <form method="POST">
+            <div class="form-field">
+                <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed (in USD):</label>
+                <input type="number" name="InscClaimAmtReimbursed" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="DeductibleAmtPaid">Deductible Amount Paid (in USD):</label>
+                <input type="number" name="DeductibleAmtPaid" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="RenalDiseaseIndicator">Renal Disease Indicator (Numeric):</label>
+                <input type="number" name="RenalDiseaseIndicator" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_Alzheimer">Chronic Condition: Alzheimer (Numeric):</label>
+                <input type="number" name="ChronicCond_Alzheimer" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_Heartfailure">Chronic Condition: Heart Failure (Numeric):</label>
+                <input type="number" name="ChronicCond_Heartfailure" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_KidneyDisease">Chronic Condition: Kidney Disease (Numeric):</label>
+                <input type="number" name="ChronicCond_KidneyDisease" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_Cancer">Chronic Condition: Cancer (Numeric):</label>
+                <input type="number" name="ChronicCond_Cancer" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_ObstrPulmonary">Chronic Condition: Obstructive Pulmonary Disease (Numeric):</label>
+                <input type="number" name="ChronicCond_ObstrPulmonary" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_Depression">Chronic Condition: Depression (Numeric):</label>
+                <input type="number" name="ChronicCond_Depression" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_Diabetes">Chronic Condition: Diabetes (Numeric):</label>
+                <input type="number" name="ChronicCond_Diabetes" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_IschemicHeart">Chronic Condition: Ischemic Heart Disease (Numeric):</label>
+                <input type="number" name="ChronicCond_IschemicHeart" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_Osteoporasis">Chronic Condition: Osteoporosis (Numeric):</label>
+                <input type="number" name="ChronicCond_Osteoporasis" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_rheumatoidarthritis">Chronic Condition: Rheumatoid Arthritis (Numeric):</label>
+                <input type="number" name="ChronicCond_rheumatoidarthritis" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ChronicCond_stroke">Chronic Condition: Stroke (Numeric):</label>
+                <input type="number" name="ChronicCond_stroke" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="AdmissionDays">Admission Days (Integer):</label>
+                <input type="number" name="AdmissionDays" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="ClaimDays">Claim Days (Integer):</label>
+                <input type="number" name="ClaimDays" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="is_dead">Is Dead (Numeric):</label>
+                <input type="number" name="is_dead" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="Num_UniqueClmDiagnosis">Number of Unique Claim Diagnoses (Integer):</label>
+                <input type="number" name="Num_UniqueClmDiagnosis" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="Num_UniqueProcedureCode">Number of Unique Procedure Codes (Integer):</label>
+                <input type="number" name="Num_UniqueProcedureCode" step="any" required>
+            </div>
+            <div class="form-field">
+                <label for="NumPhysicians">Number of Physicians (Integer):</label>
+                <input type="number" name="NumPhysicians" step="any" required>
+            </div>
+            <div class="form-field">
+                <input type="submit" value="Submit">
+            </div>
+        </form>
 
-        <div class="form-field">
-            <label for="DeductibleAmtPaid">Deductible Amount Paid (in USD):</label><br>
-            <input type="number" name="DeductibleAmtPaid" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="RenalDiseaseIndicator">Renal Disease Indicator (Numeric):</label><br>
-            <input type="number" name="RenalDiseaseIndicator" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="ChronicCond_Alzheimer">Chronic Condition: Alzheimer (Numeric):</label><br>
-            <input type="number" name="ChronicCond_Alzheimer" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="ChronicCond_Heartfailure">Chronic Condition: Heart Failure (Numeric):</label><br>
-            <input type="number" name="ChronicCond_Heartfailure" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="ChronicCond_KidneyDisease">Chronic Condition: Kidney Disease (Numeric):</label><br>
-            <input type="number" name="ChronicCond_KidneyDisease" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="ChronicCond_Cancer">Chronic Condition: Cancer (Numeric):</label><br>
-            <input type="number" name="ChronicCond_Cancer" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="AdmissionDays">Admission Days (Integer):</label><br>
-            <input type="number" name="AdmissionDays" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="ClaimDays">Claim Days (Integer):</label><br>
-            <input type="number" name="ClaimDays" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="is_dead">Is Dead (Numeric):</label><br>
-            <input type="number" name="is_dead" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="Num_UniqueClmDiagnosis">Number of Unique Claim Diagnoses (Integer):</label><br>
-            <input type="number" name="Num_UniqueClmDiagnosis" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="Num_UniqueProcedureCode">Number of Unique Procedure Codes (Integer):</label><br>
-            <input type="number" name="Num_UniqueProcedureCode" step="any" required><br><br>
-        </div>
-
-        <div class="form-field">
-            <label for="NumPhysicians">Number of Physicians (Integer):</label><br>
-            <input type="number" name="NumPhysicians" step="any" required><br><br>
-        </div>
-
-        <input type="submit" value="Submit">
-    </form>
-
-    {% if pred is not none %}
+        {% if pred is not none %}
         <div class="prediction">
             <p>The probability of fraud is: <strong>{{ pred }}</strong></p>
             <p>This claim is {% if pred >= 0.5 %}potential fraud{% else %}not fraud{% endif %}.</p>
         </div>
-    {% endif %}
+        {% endif %}
+    </div>
 </body>
-</html>
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Predict Potential Fraud</title>
-  </head>
-  <body>
-    <h2>Predict Potential Fraud</h2>
-
-    <form method="POST" action="/">
-      <label for="BeneID">Beneficiary ID:</label><br>
-      <input type="text" name="BeneID" required><br><br>
-
-      <label for="ClaimID">Claim ID:</label><br>
-      <input type="text" name="ClaimID" required><br><br>
-
-      <label for="InscClaimAmtReimbursed">Insurance Claim Amount Reimbursed:</label><br>
-      <input type="number" name="InscClaimAmtReimbursed" required><br><br>
-
-      <label for="DeductibleAmtPaid">Deductible Amount Paid:</label><br>
-      <input type="number" name="DeductibleAmtPaid" required><br><br>
-
-      <label for="RenalDiseaseIndicator">Renal Disease Indicator (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="RenalDiseaseIndicator" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_Alzheimer">Chronic Condition: Alzheimer (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_Alzheimer" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_Heartfailure">Chronic Condition: Heart Failure (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_Heartfailure" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_KidneyDisease">Chronic Condition: Kidney Disease (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_KidneyDisease" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_Cancer">Chronic Condition: Cancer (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_Cancer" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_ObstrPulmonary">Chronic Condition: Obstructive Pulmonary (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_ObstrPulmonary" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_Depression">Chronic Condition: Depression (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_Depression" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_Diabetes">Chronic Condition: Diabetes (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_Diabetes" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_IschemicHeart">Chronic Condition: Ischemic Heart (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_IschemicHeart" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_Osteoporasis">Chronic Condition: Osteoporosis (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_Osteoporasis" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_rheumatoidarthritis">Chronic Condition: Rheumatoid Arthritis (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_rheumatoidarthritis" min="0" max="1" required><br><br>
-
-      <label for="ChronicCond_stroke">Chronic Condition: Stroke (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="ChronicCond_stroke" min="0" max="1" required><br><br>
-
-      <label for="AdmissionDays">Admission Days:</label><br>
-      <input type="number" name="AdmissionDays" required><br><br>
-
-      <label for="ClaimDays">Claim Days:</label><br>
-      <input type="number" name="ClaimDays" required><br><br>
-
-      <label for="is_dead">Is Dead (1 for Yes, 0 for No):</label><br>
-      <input type="number" name="is_dead" min="0" max="1" required><br><br>
-
-      <label for="Num_UniqueClmDiagnosis">Number of Unique Claim Diagnoses:</label><br>
-      <input type="number" name="Num_UniqueClmDiagnosis" required><br><br>
-
-      <label for="Num_UniqueProcedureCode">Number of Unique Procedure Codes:</label><br>
-      <input type="number" name="Num_UniqueProcedureCode" required><br><br>
-
-      <label for="NumPhysicians">Number of Physicians:</label><br>
-      <input type="number" name="NumPhysicians" required><br><br>
-
-      <label for="NoOfMonths_PartACov">Number of Months with Part A Coverage:</label><br>
-      <input type="number" name="NoOfMonths_PartACov" required><br><br>
-
-      <label for="NoOfMonths_PartBCov">Number of Months with Part B Coverage:</label><br>
-      <input type="number" name="NoOfMonths_PartBCov" required><br><br>
-
-      <label for="IPAnnualReimbursementAmt">Inpatient Annual Reimbursement Amount:</label><br>
-      <input type="number" name="IPAnnualReimbursementAmt" required><br><br>
-
-      <label for="IPAnnualDeductibleAmt">Inpatient Annual Deductible Amount:</label><br>
-      <input type="number" name="IPAnnualDeductibleAmt" required><br><br>
-
-      <label for="OPAnnualReimbursementAmt">Outpatient Annual Reimbursement Amount:</label><br>
-      <input type="number" name="OPAnnualReimbursementAmt" required><br><br>
-
-      <label for="OPAnnualDeductibleAmt">Outpatient Annual Deductible Amount:</label><br>
-      <input type="number" name="OPAnnualDeductibleAmt" required><br><br>
-
-      <label for="Age">Age:</label><br>
-      <input type="number" name="Age" required><br><br>
-
-      <input type="submit" value="Submit">
-    </form>
-
-    {% if pred is not none %}
-      <p>The model predicts that this claim is {% if pred >= 0.5 %}potential fraud{% else %}not potential fraud{% endif %} with a probability of {{ pred }}</p>
-    {% endif %}
-  </body>
 </html>
 
